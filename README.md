@@ -2,7 +2,7 @@
 
 This project sets up a Tailscale subnet router in AWS to provide secure private access to an RDS PostgreSQL instance from any device in your tailnet.
 
-## Setup Steps
+## Setup
 
 ### 1. Prerequisites
 
