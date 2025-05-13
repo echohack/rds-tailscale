@@ -12,9 +12,11 @@ While you can just put these secrets in a `~/.aws` folder or a `terraform.tfvars
 
 - You will need to generate a new ssh key that we can use to provision the AWS Instance that will serve as our tailscale subnet router.
 
+- You will need `terraform` or `opentofu` installed.
+
 - You will need to generate, store, and reference a [TailScale Auth Key](https://login.tailscale.com/admin/settings/keys)
 
-- You will **need** to update the password in `userlist.txt` to something new (please change this).
+- You will need to update the password in `userlist.txt` to match your `terraform.tfvars` `rds_password`.
 
 - Do **NOT use this configuration for production**. While this is good for learning how Tailscale subnet routing works to an RDS backend, it is not security hardened, setup for HA, or provisioned in a manner consistent with production workloads. Certificates are disabled intentionally to make this point abundantly clear. You've been warned.
 
@@ -34,7 +36,7 @@ tailscale_auth_key = "tskey-auth-1234567890"
 tailscale_auth_key = $(op read op://vault-name/tailscale-auth-key/credential)
 ```
 
-### 2. Deploy Infrastructure
+### 2. Deploy
 
 ```bash
 tofu init
@@ -42,7 +44,7 @@ tofu plan
 tofu apply -auto-approve
 ```
 
-### 3. Configure Split DNS in Tailscale Admin Console
+### 3. Configure Split DNS in Tailscale
 
 After setting up the infrastructure, you need to configure split DNS in Tailscale:
 
@@ -53,14 +55,19 @@ After setting up the infrastructure, you need to configure split DNS in Tailscal
      ...or whichever datacenter sub-domains you are using
 3. Save changes
 
-### 4. Enable Route Acceptance on Client Devices
+### 4. Approve Route Advertising
 
-On Linux/macOS clients:
+For devices you can't install Tailscale on, you need to [approve the routes in the Tailscale admin UI](https://login.tailscale.com/admin/machines).
+- You will see a `Subnets !` badge on the machine you set up. This indicates it is advertising routes but hasn't been approved.
+- Click the `...` next to the machine
+- Click the checkbox and click save.
+- Now the `!` will be removed from the `Subnets` badge, indicating that the advertised routes are approved.
+
+You can also accept routes on client with Tailscale installed:
+
 ```bash
 tailscale set --accept-routes=true
 ```
-
-On Windows clients, use the Tailscale UI settings to accept subnet routes.
 
 ### 5. Verify Connectivity
 
