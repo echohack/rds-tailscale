@@ -79,22 +79,6 @@ Run the verification script to test the connection:
 ✓ All tests passed! Your Tailscale subnet router to RDS is working.
 ```
 
-### Tailscale Configuration
-
-- IP forwarding is enabled on the subnet router
-- The subnet router advertises the entire VPC CIDR block
-- DNS resolution is configured to use AWS DNS for RDS domains
-
-## Troubleshooting
-
-If you encounter connectivity issues:
-
-1. Verify IP forwarding is enabled on the subnet router
-2. Check that subnet routes are being advertised correctly
-3. Ensure your client is accepting routes
-4. Verify split DNS is configured correctly for RDS domains
-5. Check security groups to ensure traffic is allowed
-
 ## Cleanup
 
 ```bash
