@@ -16,7 +16,7 @@ While you can just put these secrets in a `~/.aws` folder or a `terraform.tfvars
 
 - You will **need** to update the password in `userlist.txt` to something new (please change this).
 
-- You will need to **NOT use this configuration for production**. While this is good for learning how Tailscale subnet routing works to an RDS backend, it is not security hardened, setup for HA, or provisioned in a manner consistent with production workloads. Certificates are disabled intentionally to make this point abundantly clear. You've been warned.
+- Do **NOT use this configuration for production**. While this is good for learning how Tailscale subnet routing works to an RDS backend, it is not security hardened, setup for HA, or provisioned in a manner consistent with production workloads. Certificates are disabled intentionally to make this point abundantly clear. You've been warned.
 
 ```bash
 # Set your AWS credentials
