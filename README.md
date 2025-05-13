@@ -79,11 +79,6 @@ Run the verification script to test the connection:
 ✓ All tests passed! Your Tailscale subnet router to RDS is working.
 ```
 
-## Important Configuration Details
-
-- For production use, consider removing the SSH ingress rule and accessing the router through Tailscale only
-- RDS security is configured to allow access only from the subnet router's security group
-
 ### Tailscale Configuration
 
 - IP forwarding is enabled on the subnet router
