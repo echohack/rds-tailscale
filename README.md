@@ -53,8 +53,6 @@ After setting up the infrastructure, you need to configure split DNS in Tailscal
      ...or whichever datacenter sub-domains you are using
 3. Save changes
 
-![Tailscale Split DNS Configuration](https://tailscale.com/kb/1235/rds-aws/assets/adding-split-dns-resolver.png)
-
 ### 4. Enable Route Acceptance on Client Devices
 
 On Linux/macOS clients:
